@@ -1,5 +1,7 @@
 package hexlet.code;
 
+import hexlet.code.games.EvenGame;
+
 import java.util.Scanner;
 
 public class App {
@@ -18,7 +20,7 @@ public class App {
                 Cli.getNameAndGreetUser();
                 break;
             case "2":
-                EvenGame.startGame();
+                EvenGame.startEvenGame();
                 break;
             case "0":
                 break;
