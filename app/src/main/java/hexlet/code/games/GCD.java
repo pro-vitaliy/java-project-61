@@ -7,7 +7,7 @@ public class GCD {
     public static String getStrDivider(int oneNum, int twoNum) {
         var divider = Math.min(oneNum, twoNum);
 
-        while(divider > 1) {
+        while (divider > 1) {
             if (oneNum % divider == 0 && twoNum % divider == 0) {
                 break;
             }
