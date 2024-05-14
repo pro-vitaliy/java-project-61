@@ -8,3 +8,5 @@ Even game https://asciinema.org/a/aG0jbmacoxItgxQjjXGxeWNTL
 Calc game https://asciinema.org/a/4j9RaYLYMgqnsXnQ0NZUu7Y2h
 
 GCD game https://asciinema.org/a/Jc8sUELVSCTqsnZKECkox3vwP
+
+Progression game https://asciinema.org/a/GbIMaIQIYx7V2wRdfoXz3WAjJ
