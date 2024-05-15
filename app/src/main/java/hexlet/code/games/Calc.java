@@ -4,34 +4,40 @@ import hexlet.code.Engine;
 import java.util.Random;
 
 public class Calc {
+    private static final Random RANDOM = new Random();
+
+    public static String getStrOperator() {
+        var index = RANDOM.nextInt(3);
+        return switch (index) {
+            case 0 -> "+";
+            case 1 -> "-";
+            case 2 -> "*";
+            default -> throw new IllegalStateException("Unexpected index value: " + index);
+        };
+    }
+
     public static void startCalcGame() {
         String[][] quesAnswersDict = new String[3][2];
-        Random random = new Random();
 
         for (var i = 0; i < quesAnswersDict.length; i++) {
-            var firstOperand = random.nextInt(20);
-            var secondOperand = random.nextInt(20);
-            var operatorIndex = random.nextInt(3);
+            var firstOperand = RANDOM.nextInt(20);
+            var secondOperand = RANDOM.nextInt(20);
             int resOfExpression = 0;
-            String strOperator = "";
+            String strOperator = getStrOperator();
 
-            switch (operatorIndex) {
-                case 0:
-                    strOperator = "+";
+            switch (strOperator) {
+                case "+":
                     resOfExpression = firstOperand + secondOperand;
                     break;
-                case 1:
-                    strOperator = "-";
+                case "-":
                     resOfExpression = firstOperand - secondOperand;
                     break;
-                case 2:
-                    strOperator = "*";
+                case "*":
                     resOfExpression = firstOperand * secondOperand;
                     break;
                 default:
                     break;
             }
-
             quesAnswersDict[i][0] = String.format("%d %s %d", firstOperand, strOperator, secondOperand);
             quesAnswersDict[i][1] = String.valueOf(resOfExpression);
         }
