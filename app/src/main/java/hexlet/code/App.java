@@ -3,8 +3,8 @@ package hexlet.code;
 import hexlet.code.games.Calc;
 import hexlet.code.games.EvenGame;
 import hexlet.code.games.GCD;
+import hexlet.code.games.Prime;
 import hexlet.code.games.Progression;
-
 import java.util.Scanner;
 
 public class App {
@@ -17,12 +17,15 @@ public class App {
         System.out.println("5 - Progression");
         System.out.println("6 - Prime");
         System.out.println("0 - Exit");
-        System.out.println("Your choice: ");
+        System.out.print("Your choice: ");
 
         Scanner sc = new Scanner(System.in);
         String userChoice = sc.nextLine();
+        startGame(userChoice);
+    }
 
-        switch (userChoice) {
+    public static void startGame(String choice) {
+        switch (choice) {
             case "1":
                 Cli.getNameAndGreetUser();
                 break;
