@@ -5,8 +5,8 @@ import java.util.Random;
 
 public class EvenGame {
     public static String[][] getQuestionsAnswersDict() {
-        var maxRounds = 3;
-        var questionAnswerPair = 2;
+        final int maxRounds = 3;
+        final int questionAnswerPair = 2;
         return new String[maxRounds][questionAnswerPair];
     }
 
@@ -15,7 +15,7 @@ public class EvenGame {
         Random random = new Random();
 
         for (var i = 0; i < quesAnswersDict.length; i++) {
-            var maxNum = 100;
+            final int maxNum = 100;
             var randomNum = random.nextInt(maxNum);
             quesAnswersDict[i][0] = "" + randomNum;
             if (randomNum % 2 == 0) {
