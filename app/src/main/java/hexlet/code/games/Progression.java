@@ -7,20 +7,20 @@ public class Progression {
     private static final Random RANDOM = new Random();
 
     public static String[][] getQuestionsAnswersDict() {
-        var maxRounds = 3;
-        var questionAnswerPair = 2;
+        final int maxRounds = 3;
+        final int questionAnswerPair = 2;
         return new String[maxRounds][questionAnswerPair];
     }
 
     public static int[] getProgression() {
-        var maxLength = 10;
-        var minLength = 5;
+        final int maxLength = 10;
+        final int minLength = 5;
         var length = RANDOM.nextInt((maxLength - minLength) + 1) + minLength;
         int[] progression = new int[length];
 
-        var maxFirstElem = 30;
+        final int maxFirstElem = 30;
         progression[0] = RANDOM.nextInt(maxFirstElem);
-        var maxStep = 10;
+        final int maxStep = 10;
         var step = RANDOM.nextInt(maxStep) + 1;  //Для исключения выпадения шага 0 прибавим 1
 
         for (var i = 1; i < length; i++) {
