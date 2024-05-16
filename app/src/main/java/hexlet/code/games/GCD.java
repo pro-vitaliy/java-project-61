@@ -5,8 +5,8 @@ import java.util.Random;
 
 public class GCD {
     public static String[][] getQuestionsAnswersDict() {
-        var maxRounds = 3;
-        var questionAnswerPair = 2;
+        final int maxRounds = 3;
+        final int questionAnswerPair = 2;
         return new String[maxRounds][questionAnswerPair];
     }
 
@@ -31,8 +31,8 @@ public class GCD {
         Random random = new Random();
 
         for (var i = 0; i < quesAnswersDict.length; i++) {
-            var maxFirstNum = 100;
-            var maxSecNum = 100;
+            final int maxFirstNum = 100;
+            final int maxSecNum = 100;
             var firstNum = random.nextInt(maxFirstNum);
             var secondNum = random.nextInt(maxSecNum);
             quesAnswersDict[i][0] = String.format("%d %d", firstNum, secondNum);
