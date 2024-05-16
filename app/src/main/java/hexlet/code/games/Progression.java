@@ -6,21 +6,27 @@ import java.util.Random;
 public class Progression {
     private static final Random RANDOM = new Random();
 
-    public static int getLenOfProgression() {
-        var maxLen = 10;
-        var minLen = 5;
-        return RANDOM.nextInt((maxLen - minLen) + 1) + minLen;
+    public static String[][] getQuestionsAnswersDict() {
+        var maxRounds = 3;
+        var questionAnswerPair = 2;
+        return new String[maxRounds][questionAnswerPair];
     }
 
     public static int[] getProgression() {
-        var length = getLenOfProgression();
+        var maxLength = 10;
+        var minLength = 5;
+        var length = RANDOM.nextInt((maxLength - minLength) + 1) + minLength;
         int[] progression = new int[length];
-        progression[0] = RANDOM.nextInt(30);
-        var step = RANDOM.nextInt(10) + 1;  //Для исключения выпадения шага 0 прибавим единицу
+
+        var maxFirstElem = 30;
+        progression[0] = RANDOM.nextInt(maxFirstElem);
+        var maxStep = 10;
+        var step = RANDOM.nextInt(maxStep) + 1;  //Для исключения выпадения шага 0 прибавим 1
 
         for (var i = 1; i < length; i++) {
             progression[i] = progression[i - 1] + step;
         }
+
         return progression;
     }
 
@@ -38,7 +44,7 @@ public class Progression {
     }
 
     public static void startProgressionGame() {
-        String[][] quesAnswersDict = new String[3][2];
+        String[][] quesAnswersDict = getQuestionsAnswersDict();
 
         for (var i = 0; i < quesAnswersDict.length; i++) {
             var progression = getProgression();

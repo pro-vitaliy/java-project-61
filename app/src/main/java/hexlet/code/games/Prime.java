@@ -4,6 +4,12 @@ import hexlet.code.Engine;
 import java.util.Random;
 
 public class Prime {
+    public static String[][] getQuestionsAnswersDict() {
+        var maxRounds = 3;
+        var questionAnswerPair = 2;
+        return new String[maxRounds][questionAnswerPair];
+    }
+
     public static boolean isPrime(int number) {
         for (var i = (number - 1); i > 1; i--) {
             if (number % i == 0) {
@@ -14,11 +20,12 @@ public class Prime {
     }
 
     public static void startPrimeGame() {
-        String[][] quesAnswersDict = new String[3][2];
+        String[][] quesAnswersDict = getQuestionsAnswersDict();
         Random random = new Random();
 
         for (var i = 0; i < quesAnswersDict.length; i++) {
-            var randomNum = random.nextInt(100);
+            var maxNum = 100;
+            var randomNum = random.nextInt(maxNum);
             quesAnswersDict[i][0] = "" + randomNum;
             if (isPrime(randomNum)) {
                 quesAnswersDict[i][1] = "yes";

@@ -4,6 +4,12 @@ import hexlet.code.Engine;
 import java.util.Random;
 
 public class GCD {
+    public static String[][] getQuestionsAnswersDict() {
+        var maxRounds = 3;
+        var questionAnswerPair = 2;
+        return new String[maxRounds][questionAnswerPair];
+    }
+
     public static String getStrDivider(int oneNum, int twoNum) {
         var divider = Math.min(oneNum, twoNum);
 
@@ -18,12 +24,14 @@ public class GCD {
     }
 
     public static void startGcdGame() {
-        String[][] quesAnswersDict = new String[3][2];
+        String[][] quesAnswersDict = getQuestionsAnswersDict();
         Random random = new Random();
 
         for (var i = 0; i < quesAnswersDict.length; i++) {
-            var firstNum = random.nextInt(100);
-            var secondNum = random.nextInt(100);
+            var maxFirstNum = 100;
+            var maxSecNum = 100;
+            var firstNum = random.nextInt(maxFirstNum);
+            var secondNum = random.nextInt(maxSecNum);
             quesAnswersDict[i][0] = String.format("%d %d", firstNum, secondNum);
             quesAnswersDict[i][1] = getStrDivider(firstNum, secondNum);
 

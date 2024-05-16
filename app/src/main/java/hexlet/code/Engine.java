@@ -16,25 +16,25 @@ public class Engine {
     public static void checkUserAnswer(String task, String[][] quesAndAnswers) {
         var userName = getNameAndGreetUser();
         System.out.println(task);
-        var counter = 0;
+        var roundCount = 0;
+        var maxRoundCount = quesAndAnswers.length;
 
-        while (counter < 3) {
-            var question = quesAndAnswers[counter][0];
-            var correctAnswer = quesAndAnswers[counter][1];
+        while (roundCount < maxRoundCount) {
+            var question = quesAndAnswers[roundCount][0];
+            var correctAnswer = quesAndAnswers[roundCount][1];
             System.out.println("Question: " + question);
             System.out.print("Your answer: ");
             var userAnswer = SC.nextLine();
             if (userAnswer.equals(correctAnswer)) {
                 System.out.println("Correct!");
-                counter++;
+                roundCount++;
             } else {
                 System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.%n", userAnswer, correctAnswer);
                 System.out.printf("Let's try again, %s!%n", userName);
                 break;
             }
         }
-
-        if (counter == 3) {
+        if (roundCount == maxRoundCount) {
             System.out.printf("Congratulations, %s!%n", userName);
         }
         SC.close();
