@@ -11,6 +11,9 @@ public class GCD {
     }
 
     public static String getStrDivider(int oneNum, int twoNum) {
+        if (oneNum == 0 || twoNum == 0) {
+            return String.valueOf(oneNum + twoNum);
+        }
         var divider = Math.min(oneNum, twoNum);
 
         while (divider > 1) {
