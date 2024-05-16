@@ -7,13 +7,13 @@ public class Calc {
     private static final Random RANDOM = new Random();
 
     public static String[][] getQuestionsAnswersDict() {
-        var maxRounds = 3;
-        var questionAnswerPair = 2;
+        final int maxRounds = 3;
+        final int questionAnswerPair = 2;
         return new String[maxRounds][questionAnswerPair];
     }
 
     public static String getStrOperator() {
-        var maxIndex = 3;
+        final int maxIndex = 3;
         var index = RANDOM.nextInt(maxIndex);
         return switch (index) {
             case 0 -> "+";
@@ -26,7 +26,7 @@ public class Calc {
     public static void startCalcGame() {
         String[][] quesAnswersDict = getQuestionsAnswersDict();
         for (var i = 0; i < quesAnswersDict.length; i++) {
-            var maxOperand = 20;
+            final int maxOperand = 20;
             var firstOperand = RANDOM.nextInt(maxOperand);
             var secondOperand = RANDOM.nextInt(maxOperand);
             int resOfExpression;
