@@ -1,16 +1,10 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import java.util.Random;
+import hexlet.code.Utils;
 
 public class GCD {
-    public static String[][] getQuestionsAnswersDict() {
-        final int maxRounds = 3;
-        final int questionAnswerPair = 2;
-        return new String[maxRounds][questionAnswerPair];
-    }
-
-    public static String getStrDivider(int oneNum, int twoNum) {
+    public static String calculateGCD(int oneNum, int twoNum) {
         if (oneNum == 0 || twoNum == 0) {
             return String.valueOf(oneNum + twoNum);
         }
@@ -26,21 +20,19 @@ public class GCD {
         return String.valueOf(divider);
     }
 
-    public static void startGcdGame() {
-        String[][] quesAnswersDict = getQuestionsAnswersDict();
-        Random random = new Random();
+    public static void start() {
+        String[][] quesAnswersDict = new String[Engine.MAX_ROUNDS][];
 
         for (var i = 0; i < quesAnswersDict.length; i++) {
-            final int maxFirstNum = 100;
-            final int maxSecNum = 100;
-            var firstNum = random.nextInt(maxFirstNum);
-            var secondNum = random.nextInt(maxSecNum);
-            quesAnswersDict[i][0] = String.format("%d %d", firstNum, secondNum);
-            quesAnswersDict[i][1] = getStrDivider(firstNum, secondNum);
-
+            final int maxNum = 100;
+            var firstNum = Utils.generateNum(maxNum);
+            var secondNum = Utils.generateNum(maxNum);
+            String question = String.format("%d %d", firstNum, secondNum);
+            String answer = calculateGCD(firstNum, secondNum);
+            quesAnswersDict[i] = new String[] {question, answer};
         }
 
         var mission = "Find the greatest common divisor of given numbers.";
-        Engine.checkUserAnswer(mission, quesAnswersDict);
+        Engine.runGame(mission, quesAnswersDict);
     }
 }
