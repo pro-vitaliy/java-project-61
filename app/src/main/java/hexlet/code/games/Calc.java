@@ -1,48 +1,36 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import java.util.Random;
+import hexlet.code.Utils;
 
 public class Calc {
-    private static final Random RANDOM = new Random();
+    public static String[] genExpressionAndResult() {
+        final int maxOperand = 20;
+        int firstOperand = Utils.generateNum(maxOperand);
+        int secondOperand = Utils.generateNum(maxOperand);
 
-    public static String[][] getQuestionsAnswersDict() {
-        final int maxRounds = 3;
-        final int questionAnswerPair = 2;
-        return new String[maxRounds][questionAnswerPair];
-    }
+        String[] operators = new String[] {"+", "-", "*"};
+        var operatorIndex = Utils.generateNum(operators.length);
+        String operator = operators[operatorIndex];
 
-    public static String getStrOperator() {
-        final int maxIndex = 3;
-        var index = RANDOM.nextInt(maxIndex);
-        return switch (index) {
-            case 0 -> "+";
-            case 1 -> "-";
-            case 2 -> "*";
-            default -> throw new IllegalStateException("Unexpected index value: " + index);
+        int resultOfExpression = switch (operator) {
+            case "+" -> firstOperand + secondOperand;
+            case "-" -> firstOperand - secondOperand;
+            case "*" -> firstOperand * secondOperand;
+            default -> throw new IllegalStateException("Unexpected value: " + operator);
         };
+        String expression = String.format("%d %s %d", firstOperand, operator, secondOperand);
+        String result = String.valueOf(resultOfExpression);
+        return new String[] {expression, result};
     }
 
-    public static void startCalcGame() {
-        String[][] quesAnswersDict = getQuestionsAnswersDict();
+    public static void start() {
+        String[][] quesAnswersDict = new String[Engine.MAX_ROUNDS][];
+
         for (var i = 0; i < quesAnswersDict.length; i++) {
-            final int maxOperand = 20;
-            var firstOperand = RANDOM.nextInt(maxOperand);
-            var secondOperand = RANDOM.nextInt(maxOperand);
-            int resOfExpression;
-            String strOperator = getStrOperator();
-
-            resOfExpression = switch (strOperator) {
-                case "+" -> firstOperand + secondOperand;
-                case "-" -> firstOperand - secondOperand;
-                case "*" -> firstOperand * secondOperand;
-                default -> throw new IllegalStateException("Unexpected value: " + strOperator);
-            };
-
-            quesAnswersDict[i][0] = String.format("%d %s %d", firstOperand, strOperator, secondOperand);
-            quesAnswersDict[i][1] = String.valueOf(resOfExpression);
+            quesAnswersDict[i] = genExpressionAndResult();
         }
         var mission = "What is the result of the expression?";
-        Engine.checkUserAnswer(mission, quesAnswersDict);
+        Engine.runGame(mission, quesAnswersDict);
     }
 }
