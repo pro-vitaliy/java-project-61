@@ -1,61 +1,43 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import java.util.Random;
+import hexlet.code.Utils;
 
 public class Progression {
-    private static final Random RANDOM = new Random();
-
-    public static String[][] getQuestionsAnswersDict() {
-        final int maxRounds = 3;
-        final int questionAnswerPair = 2;
-        return new String[maxRounds][questionAnswerPair];
-    }
-
-    public static int[] getProgression() {
-        final int maxLength = 10;
+    public static String[] genProgressionAndHideElem() {
         final int minLength = 5;
-        var length = RANDOM.nextInt((maxLength - minLength) + 1) + minLength;
-        int[] progression = new int[length];
-
+        final int maxLength = 10;
         final int maxFirstElem = 30;
-        progression[0] = RANDOM.nextInt(maxFirstElem);
         final int maxStep = 10;
-        var step = RANDOM.nextInt(maxStep) + 1;  //Для исключения выпадения шага 0 прибавим 1
 
-        for (var i = 1; i < length; i++) {
-            progression[i] = progression[i - 1] + step;
+        int length = Utils.generateNum((maxLength - minLength) + 1) + minLength;
+        int firstElem = Utils.generateNum(maxFirstElem);
+        int step = Utils.generateNum(maxStep) + 1;
+        int[] progression = new int[length];
+        for (var i = 0; i < length; i++) {
+            progression[i] = firstElem + i * step;
         }
+        int hiddenElemIndex = Utils.generateNum(length);
+        int hiddenElem = progression[hiddenElemIndex];
 
-        return progression;
-    }
-
-    public static String getStrProgression(int[] sequence, int number) {
         StringBuilder strProgression = new StringBuilder();
-
-        for (int elem : sequence) {
-            if (elem == number) {
+        for (int elem : progression) {
+            if (elem == hiddenElem) {
                 strProgression.append(".. ");
             } else {
                 strProgression.append(elem).append(" ");
             }
         }
-        return strProgression.toString();
+        return new String[] {strProgression.toString(), String.valueOf(hiddenElem)};
     }
 
-    public static void startProgressionGame() {
-        String[][] quesAnswersDict = getQuestionsAnswersDict();
+    public static void start() {
+        String[][] quesAnswersDict = new String[Engine.MAX_ROUNDS][];
 
         for (var i = 0; i < quesAnswersDict.length; i++) {
-            var progression = getProgression();
-            var secretNumIndex = RANDOM.nextInt(progression.length);
-            var secretNum = progression[secretNumIndex];
-
-            quesAnswersDict[i][0] = getStrProgression(progression, secretNum);
-            quesAnswersDict[i][1] = String.valueOf(secretNum);
+            quesAnswersDict[i] = genProgressionAndHideElem();
         }
-
         var mission = "What number is missing in the progression?";
-        Engine.checkUserAnswer(mission, quesAnswersDict);
+        Engine.runGame(mission, quesAnswersDict);
     }
 }
