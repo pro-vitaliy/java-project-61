@@ -10,9 +10,10 @@ public class Even {
 
     public static void start() {
         String[][] quesAnswersDict = new String[Engine.MAX_ROUNDS][];
+
         for (var i = 0; i < quesAnswersDict.length; i++) {
-            final int maxNum = 100;
-            var number = Utils.generateNum(maxNum);
+            final int numberLimit = 200;
+            var number = Utils.generateNum(numberLimit);
             var answer = isEven(number) ? "yes" : "no";
             quesAnswersDict[i] = new String[] {String.valueOf(number), answer};
         }
