@@ -5,19 +5,12 @@ import hexlet.code.Utils;
 
 public class GCD {
     public static String calculateGCD(int oneNum, int twoNum) {
-        if (oneNum == 0 || twoNum == 0) {
-            return String.valueOf(oneNum + twoNum);
+        while (twoNum != 0) {
+            int temp = twoNum;
+            twoNum = oneNum % twoNum;
+            oneNum = temp;
         }
-        var divider = Math.min(oneNum, twoNum);
-
-        while (divider > 1) {
-            if (oneNum % divider == 0 && twoNum % divider == 0) {
-                break;
-            }
-            divider--;
-        }
-
-        return String.valueOf(divider);
+        return String.valueOf(oneNum);
     }
 
     public static void start() {
