@@ -12,8 +12,8 @@ public class Even {
         String[][] quesAnswersDict = new String[Engine.MAX_ROUNDS][];
 
         for (var i = 0; i < quesAnswersDict.length; i++) {
-            final int numberLimit = 200;
-            var number = Utils.generateNum(numberLimit);
+            final int maxNum = 200;
+            var number = Utils.generateNum(maxNum);
             var answer = isEven(number) ? "yes" : "no";
             quesAnswersDict[i] = new String[] {String.valueOf(number), answer};
         }
