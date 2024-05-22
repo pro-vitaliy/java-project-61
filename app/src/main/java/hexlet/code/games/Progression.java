@@ -36,7 +36,7 @@ public class Progression {
             int length = Utils.generateNum((maxLength - minLength) + 1) + minLength;
             int firstElem = Utils.generateNum(maxFirstElem);
             int step = Utils.generateNum(maxStep) + 1;
-            int [] progression = generateProgression(length, firstElem, step);
+            int[] progression = generateProgression(length, firstElem, step);
 
             int hiddenElemIndex = Utils.generateNum(length);
             int hiddenElem = progression[hiddenElemIndex];
