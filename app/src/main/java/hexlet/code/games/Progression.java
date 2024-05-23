@@ -4,7 +4,7 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Progression {
-    public static int[] generateProgression(int length, int firstNum, int step) {
+    private static int[] generateProgression(int length, int firstNum, int step) {
         int[] progression = new int[length];
         for (var i = 0; i < length; i++) {
             progression[i] = firstNum + i * step;
@@ -12,7 +12,7 @@ public class Progression {
         return progression;
     }
 
-    public static String formatProgression(int[] progression, int number) {
+    private static String formatProgression(int[] progression, int number) {
         StringBuilder formattedProgression = new StringBuilder();
         for (int elem : progression) {
             if (elem == number) {
@@ -25,7 +25,7 @@ public class Progression {
     }
 
     public static void start() {
-        String[][] quesAnswersDict = new String[Engine.MAX_ROUNDS][];
+        String[][] quesAnswersDict = Utils.buildQuestionsAnswersArray();
 
         for (var i = 0; i < quesAnswersDict.length; i++) {
             final int minLength = 5;

@@ -4,12 +4,12 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Even {
-    public static boolean isEven(int num) {
+    private static boolean isEven(int num) {
         return num % 2 == 0;
     }
 
     public static void start() {
-        String[][] quesAnswersDict = new String[Engine.MAX_ROUNDS][];
+        String[][] quesAnswersDict = Utils.buildQuestionsAnswersArray();
 
         for (var i = 0; i < quesAnswersDict.length; i++) {
             final int maxNum = 200;

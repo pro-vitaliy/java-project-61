@@ -4,7 +4,7 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class GCD {
-    public static int calculateGCD(int oneNum, int twoNum) {
+    private static int calculateGCD(int oneNum, int twoNum) {
         while (twoNum != 0) {
             int temp = twoNum;
             twoNum = oneNum % twoNum;
@@ -14,7 +14,7 @@ public class GCD {
     }
 
     public static void start() {
-        String[][] quesAnswersDict = new String[Engine.MAX_ROUNDS][];
+        String[][] quesAnswersDict = Utils.buildQuestionsAnswersArray();
 
         for (var i = 0; i < quesAnswersDict.length; i++) {
             final int maxNum = 100;

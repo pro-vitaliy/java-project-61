@@ -4,7 +4,7 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Calc {
-    public static int evaluateExpression(int firstOperand, int secondOperand, String operator) {
+    private static int evaluateExpression(int firstOperand, int secondOperand, String operator) {
         return switch (operator) {
             case "+" -> firstOperand + secondOperand;
             case "-" -> firstOperand - secondOperand;
@@ -14,7 +14,7 @@ public class Calc {
     }
 
     public static void start() {
-        String[][] quesAnswersDict = new String[Engine.MAX_ROUNDS][];
+        String[][] quesAnswersDict = Utils.buildQuestionsAnswersArray();
 
         for (var i = 0; i < quesAnswersDict.length; i++) {
             final int maxOperand = 20;

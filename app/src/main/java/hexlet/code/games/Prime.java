@@ -4,7 +4,7 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Prime {
-    public static boolean isPrime(int number) {
+    private static boolean isPrime(int number) {
         if (number < 2) {
             return false;
         }
@@ -17,7 +17,7 @@ public class Prime {
     }
 
     public static void start() {
-        String[][] quesAnswersDict = new String[Engine.MAX_ROUNDS][];
+        String[][] quesAnswersDict = Utils.buildQuestionsAnswersArray();
 
         for (var i = 0; i < quesAnswersDict.length; i++) {
             final int maxNum = 100;
